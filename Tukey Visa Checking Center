@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Turkey Visa & Appointment Checking Center</title>
+
+  <style>
+    /* ===== GENERAL ===== */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+    }
+
+    a { text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #002e5b 60%, #004b9a);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      border-bottom: 3px solid #d4af37;
+    }
+
+    header img {
+      height: 55px;
+      width: auto;
+      border: 2px solid #d4af37;
+      border-radius: 5px;
+      background: white;
+      padding: 3px;
+    }
+
+    header h1 {
+      font-size: 23px;
+      margin: 0;
+      text-align: center;
+      flex: 1;
+      color: #fff9e6;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      background-color: #00386b;
+      text-align: center;
+      padding: 10px 5px;
+      border-bottom: 3px solid #d4af37;
+    }
+
+    nav a {
+      color: #f1f1f1;
+      margin: 0 14px;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.3s, border-bottom 0.3s;
+      padding-bottom: 4px;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+      border-bottom: 2px solid #ffd700;
+    }
+
+    /* ===== MAIN ===== */
+    .main-container {
+      max-width: 880px;
+      margin: 45px auto;
+      background: #ffffff;
+      padding: 35px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-top: 5px solid #d4af37;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #003259;
+      text-align: center;
+      border-bottom: 2px solid #d4af37;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    .toggle-buttons button {
+      background-color: #003259;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .toggle-buttons button.active {
+      background-color: #d4af37;
+      color: #002c54;
+      font-weight: bold;
+    }
+
+    .toggle-buttons button:hover {
+      transform: scale(1.05);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #002c54;
+    }
+
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+
+    .captcha-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .captcha-box img {
+      height: 40px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button.submit-btn {
+      background: linear-gradient(135deg, #003259, #004b9a);
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+
+    button.submit-btn:hover {
+      background: linear-gradient(135deg, #004b9a, #0060b7);
+      transform: translateY(-2px);
+    }
+
+    .result {
+      margin-top: 22px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #002c54;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 50px;
+      font-size: 14px;
+      border-top: 3px solid #d4af37;
+    }
+
+    footer a {
+      color: #ffd700;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      header { flex-direction: column; text-align: center; }
+      header h1 { margin-top: 8px; font-size: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Turkey Flag" />
+    <h1>Turkey Visa & Appointment Checking Center</h1>
+  </header>
+
+  <nav>
+    <a href="https://dhaka.emb.mfa.gov.tr/" target="_blank">Embassy Home</a>
+    <a href="https://www.konsolosluk.gov.tr/Mission" target="_blank">Consular Services</a>
+    <a href="https://www.evisa.gov.tr/en/" target="_blank">Apply for eVisa</a>
+    <a href="https://www.konsolosluk.gov.tr/Mission/SearchAppointment" target="_blank">Search Appointment</a>
+    <a href="https://www.mfa.gov.tr/" target="_blank">MFA Turkey</a>
+    <a href="mailto:embassy.dhaka@mfa.gov.tr">Contact</a>
+  </nav>
+
+  <div class="main-container">
+    <h2>Check Visa / Appointment Status</h2>
+
+    <div class="toggle-buttons">
+      <button id="visaBtn" class="active" onclick="toggleSection('visa')">Visa Checking</button>
+      <button id="appointmentBtn" onclick="toggleSection('appointment')">Appointment Search</button>
+    </div>
+
+    <!-- VISA CHECKING SECTION -->
+    <div id="visaSection">
+      <div class="form-group">
+        <label for="visaType">Visa Type</label>
+        <select id="visaType">
+          <option value="work">Work Visa</option>
+          <option value="tourist">Tourist / eVisa</option>
+          <option value="student">Student Visa</option>
+          <option value="residence">Residence Permit</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="refno">Application Reference Number</label>
+        <input type="text" id="refno" placeholder="Enter Reference Number" />
+      </div>
+
+      <div class="form-group">
+        <label for="passport">Passport Number</label>
+        <input type="text" id="passport" placeholder="Enter Passport Number" />
+      </div>
+
+      <div class="form-group">
+        <label for="captcha">Enter Captcha</label>
+        <div class="captcha-box">
+          <img id="captchaImage" src="" alt="Captcha" />
+          <input type="text" id="captcha" placeholder="Captcha" />
+        </div>
+        <small style="color:#555;">Captcha auto-refreshes every 30 seconds</small>
+      </div>
+
+      <button class="submit-btn" onclick="checkVisa()">Check Visa</button>
+      <div id="result" class="result"></div>
+    </div>
+
+    <!-- APPOINTMENT SECTION -->
+    <div id="appointmentSection" style="display:none;">
+      <div class="form-group">
+        <label for="citizenType">Applicant Type</label>
+        <select id="citizenType">
+          <option value="turkish">Turkish Citizen</option>
+          <option value="foreign">Foreign Citizen</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="appointmentNo">Appointment / Reference Number</label>
+        <input type="text" id="appointmentNo" placeholder="Enter Appointment Number" />
+      </div>
+
+      <div class="form-group">
+        <label for="passportApp">Passport or ID Number</label>
+        <input type="text" id="passportApp" placeholder="Enter ID or Passport" />
+      </div>
+
+      <div class="form-group">
+        <label for="captcha2">Enter Captcha</label>
+        <div class="captcha-box">
+          <img id="captchaImage2" src="" alt="Captcha" />
+          <input type="text" id="captcha2" placeholder="Captcha" />
+        </div>
+      </div>
+
+      <button class="submit-btn" onclick="checkAppointment()">Check Appointment</button>
+      <div id="result2" class="result"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Turkey Visa & Appointment Checking Center |
+      <a href="https://dhaka.emb.mfa.gov.tr/" target="_blank">Embassy of Türkiye – Dhaka</a>
+    </p>
+  </footer>
+
+  <script>
+    let captcha1 = "", captcha2 = "";
+
+    function generateCaptcha1() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let code = "";
+      for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random()*chars.length)];
+      captcha1 = code;
+      document.getElementById("captchaImage").src = `https://dummyimage.com/120x40/ccc/000&text=${code}`;
+    }
+
+    function generateCaptcha2() {
+      const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+      let code = "";
+      for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random()*chars.length)];
+      captcha2 = code;
+      document.getElementById("captchaImage2").src = `https://dummyimage.com/120x40/ccc/000&text=${code}`;
+    }
+
+    function checkVisa() {
+      const visaType = document.getElementById('visaType').value;
+      const ref = document.getElementById('refno').value.trim();
+      const pass = document.getElementById('passport').value.trim().toUpperCase();
+      const captcha = document.getElementById('captcha').value.trim().toUpperCase();
+      const resultEl = document.getElementById('result');
+
+      const validWork = ["A09383772","A19059408","A19471732","A03748923"];
+      const validTourist = ["A19471732","A03748923"];
+      const validStudent = ["S10293847"];
+      const validResidence = ["R99887766"];
+
+      if (!ref || !pass || !captcha) {
+        resultEl.innerText = "Please fill all fields.";
+        resultEl.style.color = "red";
+        return;
+      }
+
+      if (captcha !== captcha1) {
+        resultEl.innerText = "Invalid captcha. Try again.";
+        resultEl.style.color = "red";
+        return;
+      }
+
+      let validList = [];
+      switch(visaType){
+        case "work": validList = validWork; break;
+        case "tourist": validList = validTourist; break;
+        case "student": validList = validStudent; break;
+        case "residence": validList = validResidence; break;
+      }
+
+      if (validList.includes(pass)) {
+        resultEl.innerText = `✅ ${visaType.toUpperCase()} Visa is VALID for passport ${pass}`;
+        resultEl.style.color = "green";
+      } else {
+        resultEl.innerText = `❌ No record found for ${visaType} visa.`;
+        resultEl.style.color = "red";
+      }
+    }
+
+    function checkAppointment() {
+      const citizen = document.getElementById('citizenType').value;
+      const ref = document.getElementById('appointmentNo').value.trim();
+      const id = document.getElementById('passportApp').value.trim().toUpperCase();
+      const captcha = document.getElementById('captcha2').value.trim().toUpperCase();
+      const result2 = document.getElementById('result2');
+
+      if (!ref || !id || !captcha) {
+        result2.innerText = "Please fill all fields.";
+        result2.style.color = "red";
+        return;
+      }
+
+      if (captcha !== captcha2) {
+        result2.innerText = "Invalid captcha. Try again.";
+        result2.style.color = "red";
+        return;
+      }
+
+      if (id === "TR123456" || id === "P987654") {
+        result2.innerText = `✅ Appointment found for ${citizen==="turkish"?"Turkish Citizen":"Foreign Citizen"} (${id})`;
+        result2.style.color = "green";
+      } else {
+        result2.innerText = "❌ No appointment record found.";
+        result2.style.color = "red";
+      }
+    }
+
+    function toggleSection(section){
+      const visaSec = document.getElementById('visaSection');
+      const appSec = document.getElementById('appointmentSection');
+      const visaBtn = document.getElementById('visaBtn');
+      const appBtn = document.getElementById('appointmentBtn');
+
+      if (section==='visa'){
+        visaSec.style.display='block'; appSec.style.display='none';
+        visaBtn.classList.add('active'); appBtn.classList.remove('active');
+      } else {
+        visaSec.style.display='none'; appSec.style.display='block';
+        visaBtn.classList.remove('active'); appBtn.classList.add('active');
+      }
+    }
+
+    window.onload=function(){
+      generateCaptcha1(); generateCaptcha2();
+      setInterval(generateCaptcha1,30000);
+      setInterval(generateCaptcha2,30000);
+    };
+  </script>
+</body>
+</html>
